@@ -1,0 +1,22 @@
+{
+  "name": "imagequiz-serverside",
+  "version": "1.0.0",
+  "description": "serverside app for imagequiz in ISTA330",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gpmeyers/imagequiz-serverside.git"
+  },
+  "author": "Graysen Meyers (gpmeyers@email.arizona.edu)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gpmeyers/imagequiz-serverside/issues"
+  },
+  "homepage": "https://github.com/gpmeyers/imagequiz-serverside#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
