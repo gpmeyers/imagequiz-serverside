@@ -1,7 +1,6 @@
 // dependencies
 const express = require('express');
 const cors = require('cors');
-const data = require('./data');
 const db = require('./db');
 
 // create the server
@@ -19,9 +18,6 @@ app.use(cors(corsOptions));
 // parse json
 app.use(express.json());
 
-// data
-let scores = [];
-
 app.use(cors(corsOptions));
 
 app.get('/quizzes', (req, res) => {
@@ -36,6 +32,14 @@ app.get('/quizzes/:id', (req, res) => {
 });
 
 app.post('/score', (req, res) => {
+    let customer = req.body.customer;
+    let quiz = req.body.quiz;
+    let score = req.body.score;
+    db.saveScore(customer, quiz, score);
+    res.send(`The score ${score} was added successfully.`);
+});
+
+app.post('/score/:customer/:quiz/:score', (req, res) => {
     let customer = req.body.customer;
     let quiz = req.body.quiz;
     let score = req.body.score;
