@@ -40,9 +40,9 @@ app.post('/score', (req, res) => {
 });
 
 app.post('/score/:customer/:quiz/:score', (req, res) => {
-    let customer = req.body.customer;
-    let quiz = req.body.quiz;
-    let score = req.body.score;
+    let customer = req.params.customer;
+    let quiz = req.params.quiz;
+    let score = req.params.score;
     db.saveScore(customer, quiz, score);
     res.send(`The score ${score} was added successfully.`);
 });
