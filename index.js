@@ -25,6 +25,7 @@ let scores = [];
 app.use(cors(corsOptions));
 
 app.get('/quizzes', (req, res) => {
+    console.log(db.getQuizzes());
     res.json(db.getQuizzes());
 });
 
