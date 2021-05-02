@@ -39,13 +39,5 @@ app.post('/score', (req, res) => {
     res.send(`The score ${score} was added successfully.`);
 });
 
-app.post('/score/:customer/:quiz/:score', (req, res) => {
-    let customer = req.params.customer;
-    let quiz = req.params.quiz;
-    let score = req.params.score;
-    db.saveScore(customer, quiz, score);
-    res.send(`The score ${score} was added successfully.`);
-});
-
 // start the server
 app.listen(port, () => console.log('Listening on port ' + port));
