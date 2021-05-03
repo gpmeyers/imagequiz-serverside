@@ -24,20 +24,26 @@ let saveScore = (customer, quiz, score) => {
 
 let getQuestions = () => {
     let questions = [];
-    for (let i = 0; i < flowers.length; i++) {
-        let sql = 'select picture from imagequiz.flowers f inner join imagequiz.questions q on (f.id = q.flowerid) where q.id=($s1);';
+    let numQuestions = 0;
+    let sql = 'select COUNT(*) from imagequiz.questions;';
+    numQuestions = pool.query(sql)
+    .then(result => console.log(result))
+    .then(e => console.log(e));
+
+    for (let i = 0; i < numQuestions; i++) {
+        sql = 'select picture from imagequiz.flowers f inner join imagequiz.questions q on (f.id = q.flowerid) where q.id=($s1);';
 
         let picture = pool.query(sql, [i])
         .then(result => result.rows)
         .catch(e => console.log(e));
 
-        sql = 'select choice1, choice2, choice3 from imagequiz.questions where id=($s1)';
+        sql = 'select choice1, choice2, choice3 from imagequiz.questions where id=($s1);';
 
         let choices = pool.query(sql, [i])
         .then(result => result.rows)
         .catch(e => console.log(e));
 
-        sql = 'select answer from imagequiz.questions where id=($s1)';
+        sql = 'select answer from imagequiz.questions where id=($s1);';
 
         let answer = pool.query(sql, [i])
         .then(result => result.rows)
@@ -81,7 +87,7 @@ let getQuiz = (id) => {
     let questions = getQuestions();
 
     questionIndex = id;
-    
+
     if (questionIndex > (questions.length - 7)) {
         questionIndex = i - 5;
     }
