@@ -18,8 +18,6 @@ app.use(cors(corsOptions));
 // parse json
 app.use(express.json());
 
-app.use(cors(corsOptions));
-
 app.get('/quizzes', (req, res) => {
     console.log(db.getQuizzes());
     res.json(db.getQuizzes());
